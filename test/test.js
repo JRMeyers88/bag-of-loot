@@ -1,5 +1,5 @@
-const { assert: { equal, deepEqual, notEqual, isFunction, isObject } } = require('chai');
-const { populate } = require('../cli/lootbag.js');
+const { assert: { equal, isFunction, isObject, isArray } } = require('chai');
+const { populate, obj:{ add, remove, delivered } } = require('../cli/lootbag.js');
 
 describe("lootbag", () => {
     describe('populate', () => {
@@ -8,13 +8,31 @@ describe("lootbag", () => {
         });
     });
 
-    describe('promisefunc', () => {
+    describe('add', () => {
         it('should be a func', () => {
-            return promisefunc()
-            .then( (data) => {
-                isArray(data);
-            });
+            isFunction(add);
         });
     });
+
+    describe('remove', () => {
+        it('should be a func', () => {
+            isFunction(remove);
+        });
+    });
+
+    describe('delivered', () => {
+        it('should be a func', () => {
+            isFunction(delivered);
+        });
+    });
+
+    // describe('promisefunc', () => {
+    //     it('should be a func', () => {
+    //         return promisefunc()
+    //         .then( (data) => {
+    //             isArray(data);
+    //         });
+    //     });
+    // });
 
 });
