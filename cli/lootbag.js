@@ -27,7 +27,13 @@ const populate = () => {
 
 obj.delivered = (arg) => {
     console.log("delivered?", arg);
-    
+    db.all(`UPDATE list
+            SET delivered = "true"
+            WHERE list.name = '${arg[1]}'`,
+        (err, data) => {
+            console.log("bad", data);
+        });
+            
 };
 
 obj.add = (arg) => {
@@ -45,10 +51,9 @@ obj.add = (arg) => {
     }, 500);
 };
 
-const remove = (arg) => {
+obj.remove = (arg) => {
     console.log(`${arg[1]} has been naughty`);
-    db.all(`UPDATE list
-            SET list.delivered = true
+    db.all(`DELETE FROM list
             WHERE list.name = '${arg[1]}'`,
         (err, data) => {
             console.log("bad", data);
